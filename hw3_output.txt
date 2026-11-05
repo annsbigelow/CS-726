@@ -1,0 +1,30 @@
+## 2 ##
+# Backtracking, beta=0.5, strategy 1
+6331 62751 6332
+
+# Backtracking, beta=0.5, strategy 2, eta=1.2
+8713 11015 8714
+
+# EBLS, strategy 1
+6331 62751 6332
+
+# EBLS strategy 2, eta=1.2
+8777 12104 9282
+
+## 3 ##
+
+## Backtrack 
+# eta=1.1
+8690 9895 8691
+# eta=1.5
+8639 13702 8640
+# eta=2.0
+9277 18563 9278
+
+## EBLS 
+# eta=1.1
+8223 12252 9668
+# eta=1.5 
+8667 14167 8878.
+# eta=2.0
+9263 18579 9286
