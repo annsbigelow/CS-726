@@ -1,0 +1,72 @@
+HW 5: Steepest Descent versus Nonlinear Conjugate Gradient: FR and PR+
+
+%% For c1 = 10^{-2}, c2 = 0.3, alpha_start = 1 : %%
+
+SD converged in 56069 iterations: number of f evaluations = 537378, number of g evaluations = 168208, f = 4.46065e-08, error = 9.96318e-06
+
+CG-FR converged in 163 iterations: number of f evaluations = 1649, number of g evaluations = 491, f = 2.44829e-09, error = 8.9086e-06
+
+CG-PR+ converged in 346 iterations: number of f evaluations = 6713, number of g evaluations = 1040, f = 1.05389e-08, error = 9.94716e-06
+
+%% c1 = 2*10^{-2}, c2 = 0.3, alpha_start = 1 %%
+
+SD converged in 55639 iterations: number of f evaluations = 533257, number of g evaluations = 166918, f = 4.53007e-08, error = 9.99191e-06
+
+CG-FR converged in 224 iterations: number of f evaluations = 2130, number of g evaluations = 674, f = 1.84415e-09, error = 9.9345e-06
+
+CG-PR+ converged in 233 iterations: number of f evaluations = 3855, number of g evaluations = 704, f = 5.57604e-09, error = 5.34759e-06
+
+%% c1 = 0.05, c2=0.3, alpha_start = 1 %%
+
+SD converged in 54409 iterations: number of f evaluations = 521469, number of g evaluations = 163228, f = 4.73785e-08, error = 9.92499e-06
+
+CG-FR converged in 130 iterations: number of f evaluations = 1196, number of g evaluations = 392, f = 5.88197e-09, error = 6.3678e-06
+
+CG-PR+ converged in 130 iterations: number of f evaluations = 2768, number of g evaluations = 391, f = 6.70446e-10, error = 9.2799e-06
+
+%% It's interesting that for a slightly larger value of c1, FR and PR+ converge in the same number of iterations (but FR has fewer evaluations of f).
+
+%% c1=0.5, c2=0.3, alpha_start=1 %%
+
+SD converged in 39536 iterations: number of f evaluations = 391308, number of g evaluations = 128127, f = 5.10748e-08, error = 9.98941e-06
+CG-FR converged in 267 iterations: number of f evaluations = 2763, number of g evaluations = 934, f = 1.57199e-08, error = 6.65574e-06
+CG-PR+ converged in 101 iterations: number of f evaluations = 939, number of g evaluations = 354, f = 6.80918e-09, error = 4.20332e-06
+
+%% c1=0.5, c2=0.3, alpha_start=0.1 %%
+
+SD converged in 9584 iterations: number of f evaluations = 64010, number of g evaluations = 36218, f = 4.69367e-08, error = 9.99821e-06
+
+CG-FR converged in 222 iterations: number of f evaluations = 1515, number of g evaluations = 774, f = 1.35965e-08, error = 7.38827e-06
+
+CG-PR+ converged in 70 iterations: number of f evaluations = 437, number of g evaluations = 253, f = 1.0264e-08, error = 8.17644e-06
+
+%% For this set of parameters, it appears that the algorithms, especially PR+ and Steepest Descent, converge faster for a smaller starting step size alpha_start.
+
+%% c1=0.5, c2=0.1, alpha_start=0.1 %%
+
+Max alpha adjustments reached.
+Failure: steepest descent did not converge in less than 100,000 iterations (or the linesearch was terminated).
+Max alpha adjustments reached.
+Failure: CG-FR did not converge in less than 100,000 iterations (or the linesearch was terminated).
+Max alpha adjustments reached.
+Failure: CG-PR+ did not converge in less than 100,000 iterations (or the linesearch was terminated).
+
+%% For a value of c2 that is too small, none of the methods converge because the E-B line search reaches its maximum allowed adjustments to the step size. 
+
+%% c1=c2=0.5, alpha_start=0.1 %%
+
+SD converged in 30386 iterations: number of f evaluations = 189467, number of g evaluations = 91159, f = 4.97017e-08, error = 9.97489e-06
+
+CG-FR converged in 286 iterations: number of f evaluations = 2209, number of g evaluations = 864, f = 6.27117e-09, error = 9.85479e-06
+
+CG-PR+ converged in 156 iterations: number of f evaluations = 879, number of g evaluations = 494, f = 1.23368e-08, error = 7.95998e-06
+
+%% AI Usage %%
+I used the free version of ChatGPT to do the following tasks.
+Help with calling xpowsing.m properly. I had also never called functions from separate files in MATLAB before, so I learned something new and useful here.
+I had a bug with passing points into the function which were defined as row vectors.
+I wasn't sure how to pass in a set of parameters into a function, and the AI told me I could use "{ }" notation.
+I also had an issue with passing in the correct objects into "fprintf()" with the correct formatting which it helped me with. 
+Then I gave the AI my feedback from homework 3 and asked it to check that I wasn't missing anything from my current code, using the previous feedback as a rubric.
+
+In summary, I used AI to help with general MATLAB implementation and syntax. I coded the files myself aside from these small snippets, and then I checked my work with the AI. I think this was a useful practice for my learning because it caught small mistakes and explained why they were wrong in a way that I understood.

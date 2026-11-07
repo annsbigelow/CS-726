@@ -1,23 +1,29 @@
 function [inform,x] = SteepDescent(fun,x,sdparams)
-    [f,g]=feval(fun,x,3);
-    err = max(abs(g));
+    global numf numg
+
+    [f,d,err,a0]=sdparams{:};
+    
+    success_flag = true;
+
     k=0;
     while err > 10^-5*(1+abs(f))
-        err=max(abs(g));
-        alpha_start=1;
-        [x,alpha,nf,ng]=EBLS(fun,x,d,alpha_start);
-        
-        if numf > 100000
-            fprintf('Function evaluations reached 100,000.\n');
+        alpha_start=a0;
+        [x,alpha,nf,ng,lsflag]=EBLS(fun,x,d,alpha_start);
+        if lsflag==false
+            success_flag=false;
             break
         end
-        k=k+1;
-       % fprintf('Steepest descent, current step: (%.5g,%.5g)\n',x(1),x(2));
-    end
-    fprintf('Steepest descent converged in %d steps.\n',k);
-    
-    fprintf('Total function evaluations: %d. Gradient evaluations: %d.\n',...
-        numf,ng);
+        
+        [f,g] = feval(fun,x,3);
+        d=-g;
+        err=max(abs(g));
 
-    inform=[, ,numf,numg,feval(fun,x,1),err,x];
+        k=k+1;
+        if k > 100000
+            success_flag=false;
+            break
+        end
+    end
+
+    inform=[success_flag,k,feval(fun,x,1),err];
 end
